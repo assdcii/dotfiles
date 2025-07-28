@@ -106,7 +106,7 @@ export ARCHFLAGS="-arch $(uname -m)"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
+alias looking-glass='~/.local/bin/looking-glass-client'
 alias sqlmap='~/code/sqlmap-dev/sqlmap.py'
 alias ffuf='~/code/ffuf/ffuf'
 alias vol='~/code/volatility3/vol.py'
