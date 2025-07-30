@@ -106,7 +106,8 @@ export ARCHFLAGS="-arch $(uname -m)"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias orange='conda activate orange3'
+alias orange-cli='conda activate orange3'
+alias orange='python3 -m Orange.canvas'
 alias looking-glass='~/.local/bin/looking-glass-client'
 alias sqlmap='~/code/sqlmap-dev/sqlmap.py'
 alias ffuf='~/code/ffuf/ffuf'
