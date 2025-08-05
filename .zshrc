@@ -114,6 +114,10 @@ alias ffuf='~/code/ffuf/ffuf'
 alias vol='~/code/volatility3/vol.py'
 alias cupp='~/code/cupp/cupp.py'
 alias ff='fastfetch'
-alias webup='sudo chcon -Rt svirt_sandbox_file_t ~/code/assdcii.github.io && docker compose up'
+alias webup='sudo chcon -Rt svirt_sandbox_file_t ~/code/assdcii.github.io && cd ~/code/assdcii.github.io/ && docker compose up'
 alias untar='tar -xvzf'
 alias update='echo "===update===" && sudo dnf update -y && echo "===upgrade===" && sudo dnf upgrade -y && echo "===distro sync===" && sudo dnf distro-sync -y && echo "===autoremove===" && sudo dnf autoremove -y && echo "===clean all===" && sudo dnf clean all'
+
+. "$HOME/.local/bin/env"
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"
