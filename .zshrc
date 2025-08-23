@@ -11,6 +11,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="fox"
 # awesomepanda
 # clean
+# fox
 # fishy
 # flazz
 
@@ -94,6 +95,7 @@ fi
 
 # Compilation flags
 export ARCHFLAGS="-arch $(uname -m)"
+export PATH="/home/assdcii/bin:$PATH"
 
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
@@ -106,17 +108,45 @@ export ARCHFLAGS="-arch $(uname -m)"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias orange-cli='conda activate orange3'
-alias orange='python3 -m Orange.canvas'
+
+vol() {
+    VOLDIR="$HOME/code/volatility3"
+    source "$VOLDIR/venv/bin/activate"
+    python "$VOLDIR/vol.py" "$@"
+    deactivate
+}
+
+orange() {
+  conda activate orange3
+  python3 -m Orange.canvas
+  conda deactivate
+}
+
+update() {
+  echo "=== Update ==="
+  sudo dnf update -y 
+  echo "=== Upgrade ==="
+  sudo dnf upgrade -y
+  echo "=== Distro-sync ==="
+  sudo dnf distro-sync -y 
+  echo "=== Autoremove ==="
+  sudo dnf autoremove -y 
+  echo "=== Clean all ==="
+  sudo dnf clean all
+}
+
+webup() {
+  cd ~/code/assdcii.github.io/
+  sudo chcon -Rt svirt_sandbox_file_t .
+  docker compose up
+}
+
 alias looking-glass='~/.local/bin/looking-glass-client'
 alias sqlmap='~/code/sqlmap-dev/sqlmap.py'
 alias ffuf='~/code/ffuf/ffuf'
-alias vol='~/code/volatility3/vol.py'
 alias cupp='~/code/cupp/cupp.py'
 alias ff='fastfetch'
-alias webup='sudo chcon -Rt svirt_sandbox_file_t ~/code/assdcii.github.io && cd ~/code/assdcii.github.io/ && docker compose up'
 alias untar='tar -xvzf'
-alias update='echo "===update===" && sudo dnf update -y && echo "===upgrade===" && sudo dnf upgrade -y && echo "===distro sync===" && sudo dnf distro-sync -y && echo "===autoremove===" && sudo dnf autoremove -y && echo "===clean all===" && sudo dnf clean all'
 
 . "$HOME/.local/bin/env"
 eval "$(uv generate-shell-completion zsh)"
